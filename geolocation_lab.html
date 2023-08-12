@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/921fb3aa6f.js" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="geolocation_lab.css">
+
+    <script type='text/javascript'>
+        function GetMap() {
+            var map = new Microsoft.Maps.Map('#myMap', {
+                credentials: 'AtAZcJDrecOp9KiMs1OOnAUU_EXV9fqnI0hBX08S9enWM5PUKFxnMmFAAJ1HdbNZ'
+            });
+            // Request's the user location
+            navigator.geolocation.getCurrentPosition(function (position) {
+                console.log("inn")
+                var loc = new Microsoft.Maps.Location(
+                    position.coords.latitude,
+                    position.coords.longitude);
+
+                // Add a pushpin at the user's location
+                var pin = new Microsoft.Maps.Pushpin(loc);
+                map.entities.push(pin);
+
+                // Center the map on the user's location
+                map.setView({ center: loc, zoom: 15 });
+            });
+        }
+    </script>
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+
+    <title>Home</title>
+</head>
+
+<body>
+
+    <header id="top">
+        <div class="head">
+            <div class="name">
+                <h1>Nitish Kumar</h1>
+            </div>
+            <div class="nav">
+                <a href="#top">HOME</a>
+                <a href="#map">MAP</a>
+            </div>
+        </div>
+        <div class="body">
+            <div class="light"></div>
+        </div>
+    </header>
+
+    <!-- MAP Section -->
+
+    <div class="map" id="map">
+        <div id="myMap" class="relative "></div>
+        <div class="text">
+            <spam>Note:</spam> won't work on production website as the API used is free and
+            not allows map in production
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+    <script src="artgallery.js"></script>
+</body>
+
+</html>
